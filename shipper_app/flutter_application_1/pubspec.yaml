@@ -1,0 +1,24 @@
+name: flutter_application_1
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.1.0 # Cập nhật để hỗ trợ Dart 3.x
+  shared_preferences: ^2.1.0 # Phiên bản tương thích Dart 3.x
+  fluttertoast: ^8.2.0 # Phiên bản mới nhất hỗ trợ Dart 3.x
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
