@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/order.dart';
 import '../services/order_service.dart';
+import 'package:intl/intl.dart';
 
 class ManageDeliveryPage extends StatefulWidget {
   final String token;
@@ -87,6 +88,8 @@ class _ManageDeliveryPageState extends State<ManageDeliveryPage> {
   }
 
 Widget buildOrderCard(Order order) {
+  final NumberFormat currencyFormat = NumberFormat("#,##0", "vi_VN");
+
   return Card(
     elevation: 5,
     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -98,7 +101,6 @@ Widget buildOrderCard(Order order) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header: Customer Info
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -120,14 +122,13 @@ Widget buildOrderCard(Order order) {
             ],
           ),
           SizedBox(height: 8),
-          // Phone Number and Total Amount
           Text(
             'SĐT: ${order.phoneNumber}',
             style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
           ),
           SizedBox(height: 8),
           Text(
-            'Tổng tiền: ${order.totalAmount.toStringAsFixed(0)} đ',
+            'Tổng tiền: ${currencyFormat.format(order.totalAmount)} VND',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -136,7 +137,6 @@ Widget buildOrderCard(Order order) {
           ),
           SizedBox(height: 8),
           Divider(color: Colors.grey),
-          // Product Details
           Text(
             'Chi tiết sản phẩm:',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -144,12 +144,11 @@ Widget buildOrderCard(Order order) {
           ...order.products.map((product) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: Text(
-                  '- ${product.name} - Số lượng: ${product.quantity}',
+                  '${product.name} - Số lượng: ${product.quantity}',
                   style: TextStyle(fontSize: 14),
                 ),
               )),
           SizedBox(height: 16),
-          // Action Buttons
           if (order.orderStatus == 'Đang vận chuyển')
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -188,6 +187,7 @@ Widget buildOrderCard(Order order) {
     ),
   );
 }
+
 
 
 

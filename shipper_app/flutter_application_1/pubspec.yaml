@@ -14,6 +14,7 @@ dependencies:
   http: ^1.1.0 # Cập nhật để hỗ trợ Dart 3.x
   shared_preferences: ^2.1.0 # Phiên bản tương thích Dart 3.x
   fluttertoast: ^8.2.0 # Phiên bản mới nhất hỗ trợ Dart 3.x
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
